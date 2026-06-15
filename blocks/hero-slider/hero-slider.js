@@ -69,11 +69,38 @@ function buildSlide(row, index) {
 
   const cells = [...row.children];
 
-  // Cell 1 → slide media (image, optionally wrapped in its own link).
+  // Cell 1 → slide media. The first image is the desktop banner; an optional
+  // second image is the mobile banner (art direction). da.live can't store a
+  // raw <picture>, so the author provides two plain images and we build the
+  // <picture> here: mobile <source> below 600px, desktop <img> as the default.
   const media = document.createElement('div');
   media.className = 'hero-slider-media';
-  if (cells[0]) {
-    [...cells[0].childNodes].forEach((node) => media.append(node));
+  const mediaCell = cells[0];
+  if (mediaCell) {
+    const imgs = [...mediaCell.querySelectorAll('img')];
+    const picture = document.createElement('picture');
+    if (imgs[1]) {
+      const source = document.createElement('source');
+      source.media = '(max-width: 600px)';
+      source.srcset = imgs[1].getAttribute('src');
+      picture.append(source);
+    }
+    if (imgs[0]) {
+      const img = document.createElement('img');
+      img.setAttribute('src', imgs[0].getAttribute('src'));
+      img.setAttribute('alt', imgs[0].getAttribute('alt') || '');
+      img.setAttribute('loading', 'eager');
+      picture.append(img);
+    }
+    // An optional link wrapping the image makes the whole banner clickable.
+    const imageLink = mediaCell.querySelector('a[href]');
+    if (imageLink) {
+      imageLink.textContent = '';
+      imageLink.append(picture);
+      media.append(imageLink);
+    } else {
+      media.append(picture);
+    }
   }
   slide.append(media);
 

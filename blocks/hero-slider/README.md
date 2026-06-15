@@ -25,10 +25,15 @@ The image link and each button link are independent of each other.
 
 Each top-level row of the block is one slide:
 
-- **Cell 1** — the slide image, optionally wrapped in a link (the image link).
+- **Cell 1** — the slide image(s). The **first** image is the desktop banner; an
+  optional **second** image is the mobile banner. The block builds a `<picture>`
+  from them (mobile `<source>` below 600px, desktop `<img>` otherwise) because
+  da.live cannot store a raw `<picture>`. The cell may also contain a link to
+  make the whole banner clickable.
 - **Cells 2..N** — each holds one link, rendered as an overlaid button.
 
-`<picture>` is used for art direction (different desktop/mobile crops).
+To add a slide, add another row with the same shape. Arrows and progress bars
+appear automatically when there is more than one slide.
 
 ## Behavior
 
