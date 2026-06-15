@@ -262,6 +262,63 @@
           }
         },
         {
+          "title": "Hero Slider",
+          "id": "hero-slider",
+          "model": "hero-slider",
+          "filter": "hero-slider",
+          "plugins": {
+            "da": {
+              "rows": 1,
+              "columns": 1
+            }
+          }
+        },
+        {
+          "title": "Hero Slide",
+          "id": "hero-slide",
+          "model": "hero-slide",
+          "plugins": {
+            "da": {
+              "rows": 1,
+              "columns": 3,
+              "fields": [
+                {
+                  "name": "image",
+                  "selector": "div:nth-child(1) img[src]"
+                },
+                {
+                  "name": "imageMobile",
+                  "selector": "div:nth-child(1) source[srcset]"
+                },
+                {
+                  "name": "imageAlt",
+                  "selector": "div:nth-child(1) img[alt]"
+                },
+                {
+                  "name": "imageLink",
+                  "selector": "div:nth-child(1) a[href]"
+                },
+                {
+                  "name": "button1Text",
+                  "selector": "div:nth-child(2) a"
+                },
+                {
+                  "name": "button1Link",
+                  "selector": "div:nth-child(2) a[href]"
+                },
+                {
+                  "name": "button2Text",
+                  "selector": "div:nth-child(3) a"
+                },
+                {
+                  "name": "button2Link",
+                  "selector": "div:nth-child(3) a[href]"
+                }
+              ]
+            }
+          }
+        },
+        {
           "title": "Targeted Block",
           "id": "targeted-block",
           "model": "targeted-block",

@@ -422,6 +422,69 @@
     ]
   },
   {
+    "id": "hero-slider",
+    "fields": []
+  },
+  {
+    "id": "hero-slide",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Imagen desktop",
+        "description": "Banner para desktop (ej: 4 productos, 1440x493).",
+        "multi": false
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "imageMobile",
+        "label": "Imagen mobile",
+        "description": "Banner para mobile (ej: 1 producto, 430x355). Se muestra por debajo de 600px.",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Texto alternativo de la imagen"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "imageLink",
+        "label": "Link de la imagen"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button1Text",
+        "label": "Botón 1 — texto",
+        "value": "Hombre"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "button1Link",
+        "label": "Botón 1 — link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "button2Text",
+        "label": "Botón 2 — texto",
+        "value": "Mujer"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "button2Link",
+        "label": "Botón 2 — link"
+      }
+    ]
+  },
+  {
     "id": "hero",
     "fields": [
       {

@@ -1,0 +1,108 @@
+{
+  "definitions": [
+    {
+      "title": "Hero Slider",
+      "id": "hero-slider",
+      "model": "hero-slider",
+      "filter": "hero-slider",
+      "plugins": {
+        "da": {
+          "rows": 1,
+          "columns": 1
+        }
+      }
+    },
+    {
+      "title": "Hero Slide",
+      "id": "hero-slide",
+      "model": "hero-slide",
+      "plugins": {
+        "da": {
+          "rows": 1,
+          "columns": 3,
+          "fields": [
+            { "name": "image", "selector": "div:nth-child(1) img[src]" },
+            { "name": "imageMobile", "selector": "div:nth-child(1) source[srcset]" },
+            { "name": "imageAlt", "selector": "div:nth-child(1) img[alt]" },
+            { "name": "imageLink", "selector": "div:nth-child(1) a[href]" },
+            { "name": "button1Text", "selector": "div:nth-child(2) a" },
+            { "name": "button1Link", "selector": "div:nth-child(2) a[href]" },
+            { "name": "button2Text", "selector": "div:nth-child(3) a" },
+            { "name": "button2Link", "selector": "div:nth-child(3) a[href]" }
+          ]
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "hero-slider",
+      "fields": []
+    },
+    {
+      "id": "hero-slide",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Imagen desktop",
+          "description": "Banner para desktop (ej: 4 productos, 1440x493).",
+          "multi": false
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "imageMobile",
+          "label": "Imagen mobile",
+          "description": "Banner para mobile (ej: 1 producto, 430x355). Se muestra por debajo de 600px.",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Texto alternativo de la imagen"
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "imageLink",
+          "label": "Link de la imagen"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "button1Text",
+          "label": "Botón 1 — texto",
+          "value": "Hombre"
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "button1Link",
+          "label": "Botón 1 — link"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "button2Text",
+          "label": "Botón 2 — texto",
+          "value": "Mujer"
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "button2Link",
+          "label": "Botón 2 — link"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "hero-slider",
+      "components": ["hero-slide"]
+    }
+  ]
+}

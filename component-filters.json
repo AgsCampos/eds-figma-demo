@@ -81,5 +81,11 @@
       "text",
       "image"
     ]
+  },
+  {
+    "id": "hero-slider",
+    "components": [
+      "hero-slide"
+    ]
   }
 ]

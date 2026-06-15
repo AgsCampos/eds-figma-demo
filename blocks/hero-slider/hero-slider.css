@@ -1,0 +1,204 @@
+/*
+ * Hero Slider — Sparta
+ * Design reference: Figma node 5487:5544 @ 1440px viewport.
+ * Tokens: Sparta Primary #008AFF, slide bg #C3E8FF, inactive bar #D6DDF8, arrow bg #FBFBFB.
+ */
+
+/* Break out of the section's max-width to go full-bleed. */
+main > .section .hero-slider-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero-slider {
+  position: relative;
+}
+
+.hero-slider-viewport {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-slider-track {
+  display: flex;
+  width: 100%;
+}
+
+.hero-slider-slide {
+  position: relative;
+  flex: 0 0 100%;
+  /* Banner ratio from Figma: 1440 x 493 → height scales with viewport width. */
+  aspect-ratio: 1440 / 493;
+  background-color: #c3e8ff;
+}
+
+.hero-slider-media,
+.hero-slider-media a,
+.hero-slider-media picture,
+.hero-slider-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slider-media img {
+  object-fit: cover;
+}
+
+/* Overlaid CTA buttons (e.g. Hombre / Mujer) */
+.hero-slider-buttons {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Button block bottom sits ~67px above the banner bottom @1440 (67/493). */
+  bottom: 13.6%;
+  z-index: 2;
+  display: flex;
+  gap: 16px;
+}
+
+/* Scoped under .hero-slider to win over the global `a` rule in styles.css. */
+.hero-slider .hero-slider-button {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  background-color: #fff;
+  backdrop-filter: blur(11px);
+  color: #242424; /* Sparta Black */
+  font-family: inter, var(--type-base-font-family);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.hero-slider .hero-slider-button:hover {
+  color: #242424;
+  text-decoration: none;
+  background-color: #fff;
+}
+
+/* Circular navigation arrows */
+.hero-slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 40px;  /* 24px icon + 2 * 8px padding */
+  height: 40px;
+  padding: 8px;
+  margin: 0;
+  border: none;
+  border-radius: var(--shape-border-radius-3); /* 24px */
+  background-color: #fbfbfb;
+  color: #242424; /* Sparta Black */
+  cursor: pointer;
+  box-shadow: var(--shape-shadow-3);
+}
+
+.hero-slider-arrow:hover {
+  background-color: #fff;
+}
+
+.hero-slider-arrow.prev {
+  left: 24px;
+}
+
+.hero-slider-arrow.next {
+  right: 24px;
+}
+
+.hero-slider-arrow svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+/* Chevron base points up; rotate per direction. */
+.hero-slider-arrow.next svg {
+  transform: rotate(90deg);
+}
+
+.hero-slider-arrow.prev svg {
+  transform: rotate(-90deg);
+}
+
+/* Progress bars */
+.hero-slider-bars {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  /* 27px gap below the banner per Figma (banner bottom 606 → bars 633). */
+  padding: 27px 16px 16px;
+}
+
+.hero-slider-bar {
+  height: 3px;
+  /* Inactive width 81.7px @ 1440; shrinks fluidly on narrow viewports. */
+  width: min(81.7px, 22vw);
+  padding: 0;
+  border: none;
+  border-radius: 2px;
+  background-color: #d6ddf8;
+  cursor: pointer;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.hero-slider-bar.active {
+  /* Active width 170px @ 1440. */
+  width: min(170px, 45vw);
+  background-color: #008aff; /* Sparta Primary */
+}
+
+.hero-slider-bar:hover {
+  background-color: #b9c6f3;
+}
+
+.hero-slider-bar.active:hover {
+  background-color: #008aff;
+}
+
+/*
+ * Mobile (Figma node 5487:5545 @ 430px). Overrides scoped below 600px so the
+ * approved desktop layout is left untouched.
+ */
+@media (max-width: 600px) {
+  .hero-slider-slide {
+    /* Mobile banner ratio: 430 x 355. */
+    aspect-ratio: 430 / 355;
+  }
+
+  .hero-slider-arrow {
+    /* Centered on the shoe, ~16px above the banner mid-line (161/355). */
+    top: 45%;
+  }
+
+  .hero-slider-arrow.prev {
+    left: 4px;
+  }
+
+  .hero-slider-arrow.next {
+    right: 4px;
+  }
+
+  .hero-slider-buttons {
+    /* Buttons sit ~44px above the banner bottom @430 (44/355). */
+    bottom: 12.4%;
+  }
+
+  .hero-slider-bars {
+    /* 17px gap below the banner on mobile (banner bottom 516 → dots 533). */
+    padding-top: 17px;
+  }
+}
